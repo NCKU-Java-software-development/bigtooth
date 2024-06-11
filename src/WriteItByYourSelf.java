@@ -1,9 +1,13 @@
 import javax.swing.*;
+import javax.swing.event.DocumentListener;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Random;
+
+import javax.swing.event.DocumentEvent;
 
 public class WriteItByYourSelf extends JPanel {
     JLabel label = new JLabel("下一關自己寫啦憨豆");
@@ -17,6 +21,7 @@ public class WriteItByYourSelf extends JPanel {
     int x, y;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     Boolean CanClose = false;
+    String readonly_content = "$ ";
 
     WriteItByYourSelf(GameFrame gamePanel) {
         this.gamePanel = gamePanel;
@@ -62,6 +67,35 @@ public class WriteItByYourSelf extends JPanel {
                 }
             }
         });
+        terminal.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    handleUpdate(e);
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    handleUpdate(e);
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    handleUpdate(e);
+                }
+
+                private void handleUpdate(DocumentEvent e) {
+                    SwingUtilities.invokeLater(() -> {
+                        try {
+                            String content = terminal.getText();
+                            if (!content.startsWith(readonly_content)) {
+                                terminal.setText(readonly_content);
+                            }
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    });
+                }
+            });
 
         JScrollPane scrollPane = new JScrollPane(terminal);
         scrollPane.setBounds(340, 725, 1050, 150); // Adjust the height to allow more lines to be visible
@@ -164,7 +198,7 @@ public class WriteItByYourSelf extends JPanel {
         String output = "";
         
         if (command.equals("JAVA_DEMO_FLAG{我再也不會內卷了}")) {
-            output = "被找到flag了不嘻嘻，現在你可以滾了\n";
+            output = "被找到flag了不嘻嘻，你現在可以滾了\n";
             CanClose = true;
         } else {
             try {
@@ -199,8 +233,10 @@ public class WriteItByYourSelf extends JPanel {
         }
     }
 
-    private static void appendToTextArea(String text, JTextArea CodePanel) {
+    private void appendToTextArea(String text, JTextArea CodePanel) {
         CodePanel.append(text);
         CodePanel.setCaretPosition(CodePanel.getDocument().getLength());
+        this.readonly_content = CodePanel.getText();
+        System.out.println(readonly_content);
     }
 }
