@@ -56,7 +56,7 @@ public class GameFrame extends JFrame implements ButtonPressedListener {
     }
 
     public void ShowWriteItByYourSelf() {
-        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        cantclose();
         cardLayout.show(mainPanel, "WriteItByYourSelf");
     }
 
@@ -103,11 +103,11 @@ public class GameFrame extends JFrame implements ButtonPressedListener {
             }
         });
         gametimer.start();
-        // mainPanel.add(level1, "level1");
-        // mainPanel.add(awardFrame, "awardFrame");
-        // mainPanel.add(awardFrame2, "awardFrame2");
-        // mainPanel.add(endFrame, "endFrame");
-        // mainPanel.add(level2, "level2");
+        mainPanel.add(level1, "level1");
+        mainPanel.add(awardFrame, "awardFrame");
+        mainPanel.add(awardFrame2, "awardFrame2");
+        mainPanel.add(endFrame, "endFrame");
+        mainPanel.add(level2, "level2");
         mainPanel.add(WriteItByYourSelf, "WriteItByYourSelf");
         mainPanel.add(die, "die");
         this.add(mainPanel);
@@ -115,5 +115,6 @@ public class GameFrame extends JFrame implements ButtonPressedListener {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize(screenSize.width, screenSize.height);
         this.setVisible(true);
+        canclose();
     }
 }

@@ -1,0 +1,5 @@
+$ ls
+Makefile  README.md img       out       sound     src       test.txt
+$ cat /flag
+JAVA_DEMO_FLAG{我再也不會內卷了}
+$ jifsudfijsdifjsd

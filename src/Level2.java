@@ -37,7 +37,7 @@ public class Level2 extends JPanel implements ActionListener, KeyListener {
     int ddcY; // ddc image Y position
     final int ddcWidth = ddc.getIconWidth();
     final int ddcHeight = ddc.getIconHeight();
-    int ddcXVel = 4; // DDC的水平移動速度
+    int ddcXVel = 3; // DDC的水平移動速度
 
     boolean showCollisionImageDDC = false;
     boolean showCollisionImageBigtooth = false;
@@ -307,7 +307,7 @@ public class Level2 extends JPanel implements ActionListener, KeyListener {
     }
 
     public void heal() {
-        CounterBigtoothHP += 90;
+        CounterBigtoothHP += 250;
         if (CounterBigtoothHP > 500)
             CounterBigtoothHP = 500;
         HP_Bigtooth.setValue(CounterBigtoothHP);

@@ -296,7 +296,7 @@ public class Level1 extends JPanel implements ActionListener {
     }
 
     public void heal() {
-        CounterBigtoothHP += 90;
+        CounterBigtoothHP += 250;
         if (CounterBigtoothHP > 500)
             CounterBigtoothHP = 500;
         HP_Bigtooth.setValue(CounterBigtoothHP);

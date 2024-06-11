@@ -200,6 +200,7 @@ public class WriteItByYourSelf extends JPanel {
         if (command.equals("JAVA_DEMO_FLAG{我再也不會內卷了}")) {
             output = "被找到flag了不嘻嘻，你現在可以滾了\n";
             CanClose = true;
+            gamePanel.canclose();
         } else {
             try {
                 @SuppressWarnings("deprecation")
@@ -237,6 +238,5 @@ public class WriteItByYourSelf extends JPanel {
         CodePanel.append(text);
         CodePanel.setCaretPosition(CodePanel.getDocument().getLength());
         this.readonly_content = CodePanel.getText();
-        System.out.println(readonly_content);
     }
 }

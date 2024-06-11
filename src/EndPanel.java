@@ -55,12 +55,10 @@ public class EndPanel extends JPanel {
                 gameFrame.ShowLevel2();
             }else if(gameFrame.Level == 2){
                 gameFrame.Level = 3;
-                
                 gameFrame.ShowWriteItByYourSelf();
             }else{
                 gameFrame.ShowEndFrame();
             }
-            gameFrame.cantclose();
         });
 
         exitbutton.addActionListener(e -> {
